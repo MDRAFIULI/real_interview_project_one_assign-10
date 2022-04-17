@@ -1,30 +1,32 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import './Login.css';
-const Login = () => {
+const SignUp = () => {
+    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useSignInWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth);
     const navigate = useNavigate();
 
+    const handleNameBlur = e => {
+        setName(e.target.value);
+    }
     const handleEmailBlur = e => {
         setEmail(e.target.value);
     }
     const handlePasswordBlur = e => {
         setPassword(e.target.value);
     }
-    const handleLogin = e => {
+    const handleSignUp = e => {
         e.preventDefault();
-        signInWithEmailAndPassword(email, password);
-
+        createUserWithEmailAndPassword(email, password, { sendEmailVerification: true })
     }
     if (user) {
         navigate('/')
@@ -33,13 +35,17 @@ const Login = () => {
         <div>
             <div className='w-50 mx-auto'>
                 <h2 className='text-center'>please login...</h2>
-                <Form onSubmit={handleLogin}>
+                <Form onSubmit={handleSignUp}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control onBlur={handleEmailBlur} type="email" placeholder="Enter email" />
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
                         </Form.Text>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control onBlur={handleNameBlur} type="text" placeholder="Your name" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -49,14 +55,14 @@ const Login = () => {
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="Check me out" />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Login
+                    <Button variant="dark" type="submit">
+                        sign up
                     </Button>
                 </Form>
-                <p>New to sohag site <Link to='/signup'>Create account</Link></p>
+                <p>Already have an account <Link to='/login'>Login</Link></p>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default SignUp;
