@@ -1,3 +1,13 @@
 .service-img {
     height: 270px;
 }
+
+.card {
+    position: relative;
+}
+
+.btn-style {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+}
