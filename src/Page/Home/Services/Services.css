@@ -1,9 +1,26 @@
-.services-container {
+@media screen and (max-width:576px) {
+    .services-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .services-container {
+        display: grid;
+        grid-template-columns: 400px 400px 400px;
+        justify-content: center;
+        grid-gap: 20px;
+    }
+}
+
+/* .services-container {
     display: grid;
     grid-template-columns: 400px 400px 400px;
     justify-content: center;
     grid-gap: 20px;
-}
+} */
 
 .service-title-2 {
     font-weight: 700;

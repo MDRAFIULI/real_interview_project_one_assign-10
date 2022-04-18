@@ -12,8 +12,8 @@ const Services = () => {
         <div className='container'>
             <h2 id='services' className='mb-4 text-center'>My services</h2>
             <div className='row ms-8 starting-text'>
-                <h3 className='col col-4 service-title-2'>What kind of services you can take</h3>
-                <p className='col col-8 fs-4'>My Initiatives Provides a wide range of high performance services <br /> across multiple course and appointment.</p>
+                <h3 className='col-sm-12 col-lg-4 service-title-2'>What kind of services you can take</h3>
+                <p className='col-sm-12 col-lg-8 fs-4'>My Initiatives Provides a wide range of high performance services <br /> across multiple course and appointment.</p>
             </div>
             <div className='services-container'>
                 {services.map(service => <Service service={service} key={service.id}></Service>)}
