@@ -10,6 +10,7 @@ import Blog from './Page/Blog/Blog';
 import Services from './Page/Home/Services/Services';
 import RequireAuth from './Page/Login/RequireAuth/RequireAuth';
 import CheckOut from './Page/CheckOut/CheckOut';
+import AboutMe from './Page/AboutMe/AboutMe';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='home#services' element={<Services></Services>}></Route>
+        <Route path='/aboutme' element={<AboutMe></AboutMe>}></Route>
         <Route path='/checkout' element={<RequireAuth>
           <CheckOut></CheckOut>
         </RequireAuth>}></Route>

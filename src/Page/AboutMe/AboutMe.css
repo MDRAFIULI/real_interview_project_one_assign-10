@@ -1,0 +1,17 @@
+.about-me-container {
+    display: flex;
+    justify-content: center;
+}
+
+.about-me {
+    border-radius: 50px;
+    background: linear-gradient(315deg, #f0f0f0, #cacaca);
+    box-shadow: -20px -20px 60px #bebebe,
+        20px 20px 60px #ffffff;
+    word-wrap: break-word;
+    width: 75%;
+}
+
+.ul-part {
+    word-wrap: break-word;
+}

@@ -7,8 +7,6 @@ import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 import google from '../../images/Google3.png';
 import './Login.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee, faGoogle } from '@fortawesome/free-solid-svg-icons';
 
 
 const Login = () => {
@@ -62,10 +60,7 @@ const Login = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control onBlur={handlePasswordBlur} type="password" placeholder="Password" />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
+                    <Button variant="dark" type="submit">
                         Login
                     </Button>
                 </Form>
