@@ -51,7 +51,7 @@ const Blog = () => {
                     <li>By using firebase you can increase user in your site.</li>
                     <li>firebase stored application data.</li>
                     <li>You can be sent notifiction by using firebase.</li>
-                    <li></li>
+                    <li>there is a popular feature that real time data load </li>
                     <li></li>
                 </ul>
 
