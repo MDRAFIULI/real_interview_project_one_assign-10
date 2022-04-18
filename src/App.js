@@ -14,7 +14,9 @@ import CheckOut from './Page/CheckOut/CheckOut';
 function App() {
   return (
     <div>
-      <Header></Header>
+      <div>
+        <Header></Header>
+      </div>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>

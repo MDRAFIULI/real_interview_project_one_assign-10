@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loading from '../Loading/Loading';
 import './Login.css';
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -14,6 +15,13 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location?.state?.from?.pathname || '/';
+
+    if (loading) {
+        return <Loading></Loading>;
+    }
 
     const handleEmailBlur = e => {
         setEmail(e.target.value);
@@ -27,8 +35,10 @@ const Login = () => {
 
     }
     if (user) {
-        navigate('/')
+        navigate(from, { replace: true })
     }
+    console.log(user);
+
     return (
         <div>
             <div className='w-50 mx-auto'>

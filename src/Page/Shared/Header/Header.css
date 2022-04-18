@@ -1,0 +1,10 @@
+/* .nav-container {
+    position: relative;
+} */
+
+.nav-container {
+    height: 100px;
+
+    position: fixed;
+    top: 0px;
+}

@@ -32,7 +32,14 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
+/* .sticky-style {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+} */
