@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword, useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSendPasswordResetEmail, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 import google from '../../images/Google3.png';
 import './Login.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 const Login = () => {
@@ -20,7 +21,7 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
     //send password reset hook from react-firebase-hook
     const [sendPasswordResetEmail, sending, errorReset] = useSendPasswordResetEmail(auth);
-
+    const [signInWithGoogle, userGoogle, loadingGoogle, errorGoogle] = useSignInWithGoogle(auth);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -49,7 +50,10 @@ const Login = () => {
     }
     const handleResetPassword = async () => {
         await sendPasswordResetEmail(email);
-        alert('Sent email');
+        toast('Sent email');
+    }
+    const handleGoogleSignIn = e => {
+        signInWithGoogle();
     }
 
     if (user) {
@@ -59,6 +63,7 @@ const Login = () => {
 
     return (
         <div>
+            <ToastContainer />
             <div className='w-50 mx-auto'>
                 <h2 className='text-center'>please login...</h2>
                 <Form onSubmit={handleLogin}>
@@ -89,7 +94,7 @@ const Login = () => {
                 <hr className='hr-line' />
             </div>
             <div className='w-100 d-flex justify-content-center'>
-                <button style={{ height: '70px', borderRadius: '30px', fontSize: '20px' }} className='w-50 btn btn-dark text-white'><img src={google} alt="" /> Sign In With Google</button>
+                <button onClick={handleGoogleSignIn} style={{ height: '70px', borderRadius: '30px', fontSize: '20px' }} className='w-50 btn btn-dark text-white'><img src={google} alt="" /> Sign In With Google</button>
             </div>
         </div>
     );

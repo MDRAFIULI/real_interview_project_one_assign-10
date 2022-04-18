@@ -23,7 +23,7 @@ const Blog = () => {
                     <li>Authorization সবসময় Authentication এর পরে করা হয়।</li>
                 </ul>
                 <br />
-                <h2>Why i use firebase and what's alternative of firebase.</h2>
+                <h2>2. Why i use firebase and what's alternative of firebase.</h2>
                 <p>কেন আমি firebase use করি?</p>
                 <ul>
                     <li>ফায়ারবেজ দিয়ে কোন ব্যাকএন্ড ছাড়াই চমৎকার ওয়েবপেজ বানানো সম্ভব।</li>
