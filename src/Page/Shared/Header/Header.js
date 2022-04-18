@@ -23,16 +23,9 @@ const Header = () => {
                                 <Nav.Link href="/home">Home</Nav.Link>
                                 <Nav.Link href="/blog">blog</Nav.Link>
                                 <Nav.Link href="/checkout">Checkout</Nav.Link>
-                                <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                    <NavDropdown.Divider />
-                                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                                </NavDropdown>
                             </Nav>
                             <Nav>
-                                <Nav.Link className='me-4' href="home#services">Services</Nav.Link>
+                                <Nav.Link className='me-4 pe-4' href="home#services">Services</Nav.Link>
                                 <Nav.Link className='ps-4' href="/aboutme">About Me</Nav.Link>
                                 {user ? <button className='light btn btn-link' onClick={handleLogOut}>Log Out</button> : <Nav.Link eventKey={2} href="/login">Login</Nav.Link>}
                             </Nav>

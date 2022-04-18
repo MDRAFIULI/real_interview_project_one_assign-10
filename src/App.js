@@ -11,6 +11,7 @@ import Services from './Page/Home/Services/Services';
 import RequireAuth from './Page/Login/RequireAuth/RequireAuth';
 import CheckOut from './Page/CheckOut/CheckOut';
 import AboutMe from './Page/AboutMe/AboutMe';
+import NotFound from './Page/NotFound/NotFound';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path='/checkout' element={<RequireAuth>
           <CheckOut></CheckOut>
         </RequireAuth>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
   );
