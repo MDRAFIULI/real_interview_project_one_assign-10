@@ -6,11 +6,13 @@ import auth from '../../firebase.init';
 import google from '../../images/Google3.png';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useSendEmailVerification } from 'react-firebase-hooks/auth';
+import Loading from '../Loading/Loading';
 
 const SignUp = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    //useCreateUserWithEmailAndPassword hook from react-firebase-hook
     const [
         createUserWithEmailAndPassword,
         user,
@@ -18,9 +20,14 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const [signInWithGoogle, userGoogle, loadingGoogle, errorGoogle] = useSignInWithGoogle(auth);
+    //send email verification hook from react-firebase-hook
     const [sendEmailVerification, sending, errorVerifiction] = useSendEmailVerification(auth);
 
     const navigate = useNavigate();
+
+    if (loading || loadingGoogle || sending) {
+        return <Loading></Loading>;
+    }
 
     const handleNameBlur = e => {
         setName(e.target.value);
@@ -34,6 +41,7 @@ const SignUp = () => {
     const handleSignUp = async (e) => {
         e.preventDefault();
         createUserWithEmailAndPassword(email, password, { sendEmailVerification: true })
+        //email verification
         await sendEmailVerification();
         alert('Sent email');
     }
@@ -64,6 +72,8 @@ const SignUp = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control onBlur={handlePasswordBlur} type="password" placeholder="Password" />
                     </Form.Group>
+                    {error ? error : ''}
+                    {errorGoogle ? errorGoogle : ''}
                     <Button variant="dark" type="submit">
                         sign up
                     </Button>

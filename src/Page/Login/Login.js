@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
@@ -16,14 +16,24 @@ const Login = () => {
         signInWithEmailAndPassword,
         user,
         loading,
-        error,
+        errorSingIn,
     ] = useSignInWithEmailAndPassword(auth);
+    //send password reset hook from react-firebase-hook
+    const [sendPasswordResetEmail, sending, errorReset] = useSendPasswordResetEmail(auth);
+
+
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location?.state?.from?.pathname || '/';
 
+    if (errorSingIn) {
+        console.log(errorSingIn)
+    }
     if (loading) {
+        return <Loading></Loading>;
+    }
+    if (sending) {
         return <Loading></Loading>;
     }
 
@@ -36,8 +46,12 @@ const Login = () => {
     const handleLogin = e => {
         e.preventDefault();
         signInWithEmailAndPassword(email, password);
-
     }
+    const handleResetPassword = async () => {
+        await sendPasswordResetEmail(email);
+        alert('Sent email');
+    }
+
     if (user) {
         navigate(from, { replace: true })
     }
@@ -60,11 +74,14 @@ const Login = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control onBlur={handlePasswordBlur} type="password" placeholder="Password" />
                     </Form.Group>
+                    <p>{errorSingIn ? errorSingIn : ''}</p>
                     <Button variant="dark" type="submit">
                         Login
                     </Button>
                 </Form>
                 <p>New to sohag site <Link to='/signup'>Create account</Link></p>
+                <p style={{ display: 'inline' }}>Reset your password <button onClick={handleResetPassword} className='btn btn-link'>Reset</button></p>
+                <p>{errorReset ? errorReset : ''}</p>
             </div>
             <div className='or-part'>
                 <hr className='hr-line' />
