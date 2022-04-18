@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
+import google from '../../images/Google3.png';
 import './Login.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee, faGoogle } from '@fortawesome/free-solid-svg-icons';
+
+
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -64,6 +70,14 @@ const Login = () => {
                     </Button>
                 </Form>
                 <p>New to sohag site <Link to='/signup'>Create account</Link></p>
+            </div>
+            <div className='or-part'>
+                <hr className='hr-line' />
+                <p>or</p>
+                <hr className='hr-line' />
+            </div>
+            <div className='w-100 d-flex justify-content-center'>
+                <button style={{ height: '70px', borderRadius: '30px', fontSize: '20px' }} className='w-50 btn btn-dark text-white'><img src={google} alt="" /> Sign In With Google</button>
             </div>
         </div>
     );
