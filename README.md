@@ -1,9 +1,16 @@
+# LIFE MAKER SOHAG
+
+# Live Site:
+[Life Maker Sohag](https://amazing-frangollo-697e34.netlify.app/).
+
+
 
 # My feature in this project
+* Firebase authentication is activated for login & register.
+* Customers can choose a course or training.
+* Can see the customer review
 * Single page application .
-* Create Route, Create requireAuth for protected a route
-* Login form
-* Logout form
+* Their have requireAuth for protected a route
 * Toggle between Login & Logout form
 
 ## Which technologies I used in my project
