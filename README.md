@@ -1,7 +1,6 @@
 # LIFE MAKER SOHAG
 
-# Live Site:
-[Life Maker Sohag](https://amazing-frangollo-697e34.netlify.app/).
+# Live Site: [Life Maker Sohag](https://amazing-frangollo-697e34.netlify.app/).
 
 
 
